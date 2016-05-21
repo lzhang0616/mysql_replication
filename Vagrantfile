@@ -14,17 +14,24 @@ Vagrant.configure(2) do |config|
   # boxes at https://atlas.hashicorp.com/search.
 
   config.vm.define 'master' do |master|
-    master.vm.box = 'hashicorp/precise64'
+    master.vm.box = 'ubuntu/trusty64'
 
     master.vm.network :private_network, ip: '10.20.1.2'
     master.vm.provision :hosts, sync_hosts: true
   end
 
   config.vm.define 'slave1' do |slave1|
-    slave1.vm.box = 'hashicorp/precise64'
+    slave1.vm.box = 'ubuntu/trusty64'
 
     slave1.vm.network :private_network, ip: '10.20.1.3'
     slave1.vm.provision :hosts, sync_hosts: true
+  end
+
+  config.vm.define 'slave2' do |slave2|
+    slave2.vm.box = 'ubuntu/trusty64'
+
+    slave2.vm.network :private_network, ip: '10.20.1.4'
+    slave2.vm.provision :hosts, sync_hosts: true
   end
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
